@@ -1,11 +1,9 @@
-async function getWorks () {
-    const workList = await fetch("http://localhost:5678/api/works");
-    const reponse = await workList.json();
+import { GetWorks } from "./callAPI.js";
+import { Category } from "./categoriesEnum.js";
 
-    return reponse;
-}
 
-function createWork(imgUrl, title) {
+/* Function creating Work Element */
+function CreateWork(imgUrl, title) {
     const figure = document.createElement("figure");
 
     const img = document.createElement("img");
@@ -18,19 +16,18 @@ function createWork(imgUrl, title) {
     figure.appendChild(img);
     figure.appendChild(figcaption);
 
-    console.log("Element created : " + figure.outerHTML);
-
     return figure;
 }
 
-async function loadWork() {
-    const array = await getWorks();
+/* Async Function loading Work Element in DOM */
+export async function LoadWork(category) {
+    const array = await SortWorks(category);
     const galleryElement = document.querySelector(".gallery");
     if (galleryElement !== null) {
         galleryElement.innerHTML = '';
 
         for (let i = 0; i < array.length; i++) {
-            const figure = createWork(array[i].imageUrl, array[i].title);
+            const figure = CreateWork(array[i].imageUrl, array[i].title);
             galleryElement.appendChild(figure);
         }
     }
@@ -39,4 +36,37 @@ async function loadWork() {
     }
 
 }
-loadWork();
+
+/* Async Function sorting Works by Categories and returning an Array */
+async function SortWorks(category) {
+    const array = await GetWorks();
+    let newArray = [];
+    switch (category) {
+        case Category.All:
+            return array;
+        
+        case Category.Object:
+            array.forEach( work => {
+                if(work.category.id === 1) {
+                    newArray.push(work);
+                }
+            });
+            return newArray;
+
+        case Category.Appartment:
+            array.forEach( work => {
+                if(work.category.id === 2) {
+                    newArray.push(work);
+                }
+            });
+            return newArray;
+
+        case Category.Hostel:
+            array.forEach( work => {
+                if(work.category.id === 3) {
+                    newArray.push(work);
+                }
+            });
+            return newArray;
+    }
+}
