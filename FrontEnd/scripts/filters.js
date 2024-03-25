@@ -78,6 +78,7 @@ function StyleFiltersContainer() {
         container.style.justifyContent = "center";
         container.style.alignItems = "center";
         container.style.gap = "15px";
+        container.style.margin = "4em 0";
     } else {
         console.log("No Element with ID filters-container found");
     }
@@ -88,17 +89,15 @@ function StyleFilters() {
     const buttons = document.querySelectorAll(".filter");
 
     if (buttons !== null) {
-        console.log(buttons);
         for(const button of buttons) {
             button.style.height = "50px";
-            button.style.fontSize = "1.2rem";
+            button.style.fontSize = "1.1rem";
             button.style.border = "2px solid #1D6154";
             button.style.fontFamily = "Syne";
             button.style.fontWeight = "700";
             button.style.color = "#1D6154";
             button.style.backgroundColor = "white";
-            button.style.marginBottom = "2em";
-            button.style.padding = "0 30px";
+            button.style.padding = "0 25px";
             button.style.textAlign = "center";
             button.style.borderRadius = "60px";
         }
@@ -113,8 +112,10 @@ function StyleFilters() {
 function StyleSelectedFilter() {
     const button = document.querySelector(".filter-selected");
 
-    button.style.color = "white";
-    button.style.backgroundColor = "#1D6154";
+    if (button !== null) {
+        button.style.color = "white";
+        button.style.backgroundColor = "#1D6154";
+    }
 }
 
 /* Function inserting Filter Element in DOM before Gallery */
@@ -128,4 +129,10 @@ function LoadFilters() {
     StyleFilters();
 }
 
-LoadFilters();
+/* Check if User is connected or not */
+const user = window.localStorage.getItem("user");
+if (user === null) {
+    LoadFilters();
+} else {
+    LoadWork(Category.All);
+}
