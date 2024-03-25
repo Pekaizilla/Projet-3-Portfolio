@@ -186,3 +186,60 @@ footer nav ul {
 	margin: 2em
 }
 
+#login {
+	height: calc(100vh - 142.8px - 72.8px - 50px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 25px;
+}
+
+#login-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font: inherit;
+	font-size: 16px;
+}
+
+#login-form input[type=submit] {
+	height: 35px;
+	font-size: 16px;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#login-form a {
+	color: black;
+}
+
+.form-input {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin: 20px 0;
+}
+
+.form-input input {
+	font: inherit;
+	font-size: 100%;
+	border: none;
+	height: 51px;
+	width: 379px;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+#alert-box {
+	display: none;
+	opacity: 0;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	max-width: 40%;
+	padding: 30px;
+	font: inherit;
+	font-size: 18px;
+	width: fit-content;
+	text-align: center;
+	transition: opacity ease-in 0.5s;
+}
+
