@@ -54,10 +54,7 @@ async function LoadAddContent () {
     if (submit!== null) {
         submit.setAttribute("value", "Valider");
         submit.removeEventListener("click", LoadAddContent);
-        submit.addEventListener("click", async (e) => {
-            e.preventDefault();
-            await AddWork();
-        });
+        submit.setAttribute("form", "add-content-form");
         submit.disabled = true;
     }
 
