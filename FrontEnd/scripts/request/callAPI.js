@@ -42,13 +42,9 @@ export async function DeleteWork(id) {
         headers: {"Authorization": "Bearer " + JSON.parse(window.localStorage.getItem("user")).token}
     });
 
-    const response = await work.json();
-
-    if (work.status !== 200) {
-        throw new Error("API Error");
+    if (!work.ok) {
+        throw new Error("API Error : " + work.status);
     }
-
-    return response;
 }
 
 export async function PostWork (image, title, categoryId) {
@@ -57,14 +53,10 @@ export async function PostWork (image, title, categoryId) {
     formData.append('title', title.value);
     formData.append('category', categoryId.value);
 
-    const work = await fetch(url + "/works",
+    return await fetch(url + "/works",
     {
         method: "POST",
         headers: {"Authorization": "Bearer " + JSON.parse(window.localStorage.getItem("user")).token},
         body: formData
     });
-
-    const response = await work.json();
-
-    return response;
 }
