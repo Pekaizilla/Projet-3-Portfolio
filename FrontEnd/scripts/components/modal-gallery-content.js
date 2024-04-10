@@ -1,5 +1,6 @@
 import { GetWorks } from "../request/callAPI.js";
 import { DeleteWork } from "../request/callAPI.js";
+import { CloseModalContainer } from "./modal.js";
 
 
 export async function CreateGalleryContent () {
@@ -51,9 +52,10 @@ function CreateGalleryElement (work) {
     icon.style.right = "5px";
     icon.style.cursor = "pointer";
 
-    icon.addEventListener("click", async (e) => {
-        e.preventDefault
-        await DeleteWork(work.id);
+    icon.addEventListener("click", (e) => {
+        e.preventDefault();
+        DeleteWork(work.id);
+        CloseModalContainer();
     });
 
     div.appendChild(img);
