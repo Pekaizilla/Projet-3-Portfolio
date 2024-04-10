@@ -1,3 +1,5 @@
+import { Category } from "../utils/categoriesEnum.js";
+import { LoadWork } from "./gallery.js";
 import { LoadGalleryContent } from "./modal-content.js";
 
 /* ---------- Edit Button ---------- */
@@ -107,7 +109,9 @@ export function CloseModalContainer () {
 
         modalContainer.outerHTML = "";
 
-        window.removeEventListener("keydown", (e) => {});
+        window.removeEventListener("keydown", () => {});
+
+        LoadWork(Category.All);
     }
 }
 
