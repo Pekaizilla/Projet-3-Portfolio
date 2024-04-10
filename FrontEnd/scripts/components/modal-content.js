@@ -1,9 +1,6 @@
 import { CreateGalleryContent } from "./modal-gallery-content.js";
 import { AddWork, CreateAddContent, isImageValid, isTitleValid } from "./modal-add-content.js";
 import { CloseModalContainer } from "./modal.js";
-import { LoadWork } from "./gallery.js";
-import { Category } from "../utils/categoriesEnum.js";
-
 
 function ModifyModalTitle(title) {
     const h3 = document.getElementById("modal-title");
@@ -66,6 +63,7 @@ async function LoadAddContent () {
             e.preventDefault();
             if (isImageValid && isTitleValid) {
                 await AddWork();
+                CloseModalContainer();
             }
         });
     }
