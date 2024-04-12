@@ -38,3 +38,55 @@ export function HideAlertBox(id) {
     }
 
 }
+
+export function SuccessPopup(message) {
+    const popup = document.createElement("div");
+
+    const icon = document.createElement("i");
+    icon.classList.add("fa-regular", "fa-circle-check", "fa-2x");
+    icon.style.color = "#2DDB0A";
+
+    const p = document.createElement("p");
+    p.textContent = message;
+    p.style.fontFamily = "Work Sans";
+    p.style.fontSize = "20px";
+    p.style.color = "#2DDB0A";
+
+    const button = document.createElement("i");
+    button.classList.add("fa-solid", "fa-xmark", "fa-xl");
+    button.style.color = "#2DDB0A";
+    button.addEventListener("click", ClosePopup);
+
+    popup.setAttribute("id", "success-popup");
+
+    popup.style.width = "fit-content";
+    popup.style.height = "fit-content";
+    popup.style.padding = "20px";
+    popup.style.zIndex = "100";
+    popup.style.position = "fixed";
+    popup.style.top = "10px";
+    popup.style.right = "50vw";
+    popup.style.transform = "translateX(50%)";
+    popup.style.gap = "10px";
+
+    popup.style.backgroundColor = "#ACF7A0";
+    popup.style.border = "#2DDB0A 2px solid";
+    popup.style.display = "flex";
+    popup.style.flexDirection = "row";
+    popup.style.alignItems = "center";
+    popup.style.justifyContent = "space-between";
+
+    popup.appendChild(icon);
+    popup.appendChild(p);
+    popup.appendChild(button);
+
+    const body = document.querySelector("body");
+
+    body.appendChild(popup);
+}
+
+function ClosePopup() {
+    const popup = document.getElementById("success-popup");
+
+    popup.outerHTML = "";
+}
