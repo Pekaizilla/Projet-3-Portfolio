@@ -1,6 +1,7 @@
 import { GetWorks } from "../request/callAPI.js";
 import { DeleteWork } from "../request/callAPI.js";
-import { CloseModalContainer } from "./modal.js";
+import { SuccessPopup } from "../utils/alertBox.js";
+import { LoadGalleryContent } from "./modal-content.js";
 
 
 export async function CreateGalleryContent () {
@@ -55,7 +56,8 @@ function CreateGalleryElement (work) {
     icon.addEventListener("click", (e) => {
         e.preventDefault();
         DeleteWork(work.id);
-        CloseModalContainer();
+        SuccessPopup("Le contenu a bien été supprimé");
+        LoadGalleryContent();
     });
 
     div.appendChild(img);

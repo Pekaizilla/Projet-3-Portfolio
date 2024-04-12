@@ -1,6 +1,6 @@
 import { CreateGalleryContent } from "./modal-gallery-content.js";
 import { AddWork, CreateAddContent, isImageValid, isTitleValid } from "./modal-add-content.js";
-import { CloseModalContainer } from "./modal.js";
+import { SuccessPopup } from "../utils/alertBox.js";
 
 function ModifyModalTitle(title) {
     const h3 = document.getElementById("modal-title");
@@ -63,7 +63,8 @@ async function LoadAddContent () {
             e.preventDefault();
             if (isImageValid && isTitleValid) {
                 await AddWork();
-                CloseModalContainer();
+                SuccessPopup("Votre photo a bien été ajoutée");
+                LoadAddContent();
             }
         });
     }
