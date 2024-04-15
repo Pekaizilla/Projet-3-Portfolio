@@ -47,7 +47,7 @@ async function SortWorks(category) {
         
         case Category.Object:
             array.forEach( work => {
-                if(work.category.id === 1) {
+                if(work.category.id === Category.Object.id) {
                     newArray.push(work);
                 }
             });
@@ -55,7 +55,7 @@ async function SortWorks(category) {
 
         case Category.Appartment:
             array.forEach( work => {
-                if(work.category.id === 2) {
+                if(work.category.id === Category.Appartment.id) {
                     newArray.push(work);
                 }
             });
@@ -63,7 +63,7 @@ async function SortWorks(category) {
 
         case Category.Hostel:
             array.forEach( work => {
-                if(work.category.id === 3) {
+                if(work.category.id === Category.Hostel.id) {
                     newArray.push(work);
                 }
             });
