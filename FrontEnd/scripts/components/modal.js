@@ -1,3 +1,4 @@
+import { ClosePopup } from "../utils/alertBox.js";
 import { Category } from "../utils/categoriesEnum.js";
 import { LoadWork } from "./gallery.js";
 import { LoadGalleryContent } from "./modal-content.js";
@@ -110,6 +111,8 @@ export function CloseModalContainer () {
         modalContainer.outerHTML = "";
 
         window.removeEventListener("keydown", () => {});
+
+        ClosePopup();
 
         LoadWork(Category.All);
     }

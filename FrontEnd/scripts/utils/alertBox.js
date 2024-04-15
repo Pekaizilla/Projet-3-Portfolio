@@ -85,8 +85,10 @@ export function SuccessPopup(message) {
     body.appendChild(popup);
 }
 
-function ClosePopup() {
+export function ClosePopup() {
     const popup = document.getElementById("success-popup");
 
-    popup.outerHTML = "";
+    if (popup!== null) {
+        popup.outerHTML = "";
+    }
 }
