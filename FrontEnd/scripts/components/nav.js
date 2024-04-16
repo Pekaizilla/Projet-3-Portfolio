@@ -1,7 +1,7 @@
 /* Adding redirection to li Element */
 export function Redirection() {
     //  Get all li Elements
-    const links = document.querySelectorAll("li");
+    const links = document.querySelectorAll("nav ul li");
 
     // Loop through all li Elements and add event listener to each one
     links.forEach( link => {
